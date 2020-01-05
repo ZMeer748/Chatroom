@@ -10,8 +10,8 @@
     <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300" rel="stylesheet"
         type="text/css">
-    <!-- <link rel="stylesheet" href="/css/main.css" /> -->
-    <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <!-- <link rel="stylesheet" href="../static/css/main.css" /> -->
 </head>
 
 <body>
@@ -21,8 +21,8 @@
             <form id="loginForm" class="login-form">
                 <h1 class="h3 mb-3 font-weight-normal">请输入一个用户名</h1>
                 <br>
-                <label for="inputUserName" class="sr-only">用户名</label>
-                <input type="text" id="inputUserName" class="form-control" placeholder="用户名" required="" autofocus="">
+                <label for="usernameInput" class="sr-only">用户名</label>
+                <input type="text" id="usernameInput" class="form-control" placeholder="用户名" required="" autofocus="">
                 <br>
                 <button class="btn btn-flat btn-primary" type="submit">进入聊天</button>
             </form>
@@ -40,11 +40,11 @@
                     <div class="col-4"></div>
                 </div>
             </div>
-            <div class="message-container">
-                <ul class="mb-0 pt-3">
+            <div id="messageContainer" class="message-container">
+                <ul id="messageArea" class="mb-0 pt-3">
                     <li class="message-sent-li pb-3">
                         <!-- <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /> -->
-                        <i style="background-color: blueviolet;"></i>
+                        <i style="background-color: orange;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Frodo</strong></h6>
                             <p>I can't do this, Sam.</p>
@@ -54,14 +54,14 @@
                         <p class="text-center"> 用户 秦安 加入群聊</p>
                     </li>
                     <li class="message-replies-li pb-3">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                        <i style="background-color: chocolate;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Sam</strong></h6>
                             <p>I know. It's all wrong. By rights, we shouldn't even be here. But we are.</p>
                         </div>
                     </li>
                     <li class="message-replies-li pb-3">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                        <i style="background-color: chocolate;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Sam</strong></h6>
                             <p>It's like in the great stories, Mr. Frodo. The ones that really mattered. Full of
@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li class="message-replies-li pb-3">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                        <i style="background-color: chocolate;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Sam</strong></h6>
                             <p>But in the end, it's only a passing thing, this shadow. Even darkness must pass. A new
@@ -81,7 +81,7 @@
                         </div>
                     </li>
                     <li class="message-replies-li pb-3">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                        <i style="background-color: chocolate;"></i>
                         <div class="shadow-sm rounded">
                             <strong>Sam</strong>
                             <p>Folk in those stories, had lots of chances of turning back, only they didn't. They kept
@@ -89,14 +89,14 @@
                         </div>
                     </li>
                     <li class="message-sent-li pb-3">
-                        <i style="background-color: blueviolet;"></i>
+                        <i style="background-color: orange;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Frodo</strong></h6>
                             <p>What are we holding on to, Sam?</p>
                         </div>
                     </li>
                     <li class="message-replies-li pb-3">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                        <i style="background-color: chocolate;"></i>
                         <div class="shadow-sm rounded">
                             <h6><strong>Sam</strong></h6>
                             <p>That there's some good in this world, Mr. Frodo. And it's worth fighting for.</p>
@@ -106,16 +106,15 @@
             </div>
             <div class="message-input shadow-lg bg-white shadow">
                 <div class="wrap">
-                    <div id="chatForm" class="input-group">
-                        <input type="text" class="form-control border-0" placeholder="……"
-                            aria-label="Recipient's username with two button addons" aria-describedby="button-addon4"
-                            autocomplete="off">
+                    <Form id="chatForm" class="input-group">
+                        <input id="messageInput" type="text" class="form-control border-0" placeholder="……"
+                            aria-describedby="button-addon4" autocomplete="off">
                         <div class="input-group-append" id="button-addon4">
                             <button class="btn btn-warning" type="reset"><i class="fas fa-undo-alt"></i></button>
                             <button class="btn btn-success" type="submit" id="msg-send"><i class="fa fa-paper-plane"
                                     aria-hidden="true"></i></button>
                         </div>
-                    </div>
+                    </Form>
                 </div>
             </div>
         </div>
@@ -125,15 +124,8 @@
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
-    <!-- <script src="/js/main.js"></script> -->
-    <script src="../static/js/main.js"></script>
-    <script>
-        $(function () {
-            $(".message-container ul li").each(function () {
-                $(this).slideDown();
-            });
-        });
-    </script>
+    <script src="/js/main.js"></script>
+    <!-- <script src="../static/js/main.js"></script> -->
 </body>
 
 </html>
