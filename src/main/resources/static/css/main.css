@@ -27,7 +27,7 @@ body {
     min-width: 360px;
     max-width: 720px;
     height: 92vh;
-    min-height: 540px;
+    min-height: 560px;
     max-height: 1080px;
     background: #E6EAEA;
     box-shadow: inset;
@@ -190,7 +190,7 @@ input:focus,
 
 .login-page {
     height: 100%;
-    padding: 36% 0;
+    padding: 25% 0;
 }
 
 .login-form {
@@ -198,5 +198,9 @@ input:focus,
     width: 100%;
     max-width: 330px;
     padding: 15px;
-    margin: auto;
+    margin: 4rem auto;
+}
+
+.message-container hr, .message-container h6 {
+    margin: 0.2rem 0;
 }

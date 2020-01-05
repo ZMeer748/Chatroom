@@ -5,7 +5,6 @@ var chatForm = document.querySelector('#chatForm');
 var messageInput = document.querySelector('#messageInput');
 var messageArea = document.querySelector('#messageArea');
 var messageContainer = document.querySelector('#messageContainer');
-var connectingElement = document.querySelector('.connecting');
 
 var stompClient = null;
 var username = null;
@@ -31,12 +30,9 @@ function connect(event) {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
-
 function onConnected() {
-    // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 
-    // Tell your username to the server
     stompClient.send("/app/chat.addUser", {},
         JSON.stringify({
             sender: username,
@@ -44,7 +40,6 @@ function onConnected() {
         })
     )
 }
-
 
 function onError(error) {
     var messageElement = document.createElement('li');
@@ -63,7 +58,6 @@ function onError(error) {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
-
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
     messageContent = document.querySelector('#messageInput').value.trim();
@@ -78,7 +72,6 @@ function sendMessage(event) {
     }
     event.preventDefault();
 }
-
 
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
@@ -138,6 +131,7 @@ function onMessageReceived(payload) {
         messageUserName.appendChild(messageUserNameStrong);
 
         messageContentDiv.appendChild(messageUserName);
+        messageContentDiv.appendChild(document.createElement('hr'));
 
         var usernameText = document.createTextNode(message.sender);
         messageUserNameStrong.appendChild(usernameText);
@@ -147,7 +141,6 @@ function onMessageReceived(payload) {
         textElement.appendChild(messageText);
 
         messageContentDiv.appendChild(textElement);
-
     }
 
     messageArea.appendChild(messageElement);
@@ -155,7 +148,6 @@ function onMessageReceived(payload) {
     console.info("scrollTop: " + messageContainer.scrollTop);
     console.info("scrollHeight: " + messageContainer.scrollHeight);
 }
-
 
 function getAvatarColor(messageSender) {
     var hash = 0;
