@@ -192,3 +192,21 @@ body {
     width: 4rem;
     border-radius: 0;
 }
+
+input:focus,
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.login-page{
+    height: 100%;
+    padding: 36% 0;
+}
+
+.login-form {
+    text-align: center;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}

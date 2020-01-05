@@ -17,16 +17,23 @@
 <body>
     <div id="frame" class="shadow bg-white rounded">
 
-        <div id="login-page" class="login-page d-none">
-
+        <div id="loginPage" class="login-page">
+            <form id="loginForm" class="login-form">
+                <h1 class="h3 mb-3 font-weight-normal">请输入一个用户名</h1>
+                <br>
+                <label for="inputUserName" class="sr-only">用户名</label>
+                <input type="text" id="inputUserName" class="form-control" placeholder="用户名" required="" autofocus="">
+                <br>
+                <button class="btn btn-flat btn-primary" type="submit">进入聊天</button>
+            </form>
         </div>
 
-        <div id="chat-page" class="chat-page">
+        <div id="chatPage" class="chat-page d-none">
             <div class="chatroom-header shadow-sm rounded">
                 <div class="row">
                     <div class="user-name-input col-4">
                         <div class="input-group">
-                            
+
                         </div>
                     </div>
                     <h4 class="d-block mb-0 col-4">聊天室</h4>
@@ -99,7 +106,7 @@
             </div>
             <div class="message-input shadow-lg bg-white shadow">
                 <div class="wrap">
-                    <div class="input-group">
+                    <div id="chatForm" class="input-group">
                         <input type="text" class="form-control border-0" placeholder="……"
                             aria-label="Recipient's username with two button addons" aria-describedby="button-addon4"
                             autocomplete="off">
